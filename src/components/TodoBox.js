@@ -16,14 +16,11 @@ class TodoBox extends Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.onSubmit(e);
+        this.setState({todoText: ''});
     }
 
     getInputValue() {
         return this.state.todoText;
-    }
-
-    setInputValue(value) {
-        this.setState({todoText: value});
     }
 
 	render() {

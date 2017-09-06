@@ -5,12 +5,24 @@ import '../styles/TodoList.css';
 
 class TodoList extends Component {
 	constructor(props) {
-	  super(props);
+		super(props);
+
+		this.state = {
+			items: this.props.items
+		}
 	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps);
+		if (nextProps.items.length != this.state.items.length) {
+			this.setState({ items: nextProps.items });
+		}
+	}
+
 	render() {
 		let items = this.props.items.map((currenValue, index, array) => {
 			return(
-				<TodoListItem name={currenValue} />
+				<TodoListItem name={currenValue} key={ index }/>
 			);
 		});
 

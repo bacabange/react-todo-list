@@ -19,12 +19,9 @@ class App extends Component {
         let todoListValue = this.refs.todobox.getInputValue();
         let newItem = this.state.todoItems.concat(todoListValue);
         this.setState({ todoItems: newItem });
-
-        this.refs.todobox.setInputValue('');
     }
 
     render() {
-        console.log(this.state.todoItems);
         return (
             <div className="App card">
                 <div className="card-body">
