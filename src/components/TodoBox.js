@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/TodoBox.css';
 
 class TodoBox extends Component {
@@ -8,11 +9,23 @@ class TodoBox extends Component {
 		this.state = {
 			todoText: ''
 		};
+
+        this.onSubmit = this.onSubmit.bind(this);
 	}
+
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.onSubmit(e);
+    }
+
+    getInputValue() {
+        return this.state.todoText;
+    }
+
 	render() {
 		return (
 			<div className="TodoBox">
-				<form>
+				<form onSubmit={ this.onSubmit }>
 					<div className="input-group">
                         <input
                             type="text" c
@@ -29,5 +42,9 @@ class TodoBox extends Component {
 		);
 	}
 };
+
+TodoBox.PropTypes = {
+  onSubmit: PropTypes.func.isRequired
+}
 
 export default TodoBox;
