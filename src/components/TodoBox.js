@@ -22,13 +22,17 @@ class TodoBox extends Component {
         return this.state.todoText;
     }
 
+    setInputValue(value) {
+        this.setState({todoText: value});
+    }
+
 	render() {
 		return (
 			<div className="TodoBox">
 				<form onSubmit={ this.onSubmit }>
 					<div className="input-group">
                         <input
-                            type="text" c
+                            type="text"
                             className="form-control"
                             value={ this.state.todoText }
                             onChange={ (e) => { this.setState({ todoText: e.target.value }); } } />
